@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}SupportPearlz - Chat{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="topbar">
+        <div class="brand">
+            <span class="brand__mark">SP</span>
+            <span class="brand__name">SupportPearlz</span>
+        </div>
+        <a class="btn btn--ghost" href="{{ url_for('main.logout') }}">Log out</a>
+    </div>
+
+    <h1>Customer Support</h1>
+    <p class="muted">Ask about warranty, returns, shipping, installation, or safety.</p>
+
+    <form method="POST" novalidate id="chat-form">
+        {{ form.hidden_tag() }}
+        {{ form.question(id="question", placeholder="Example: How long is the warranty?", rows="4") }}
+        {% for err in form.question.errors %}
+            <p class="field-error">{{ err }}</p>
+        {% endfor %}
+        <button type="submit" class="btn btn--primary" id="submit-btn">Ask SupportPearlz</button>
+    </form>
+
+    {% if answer %}
+    <div class="answer">
+        <div class="answer__label">Answer</div>
+        <div class="answer__body">{{ answer }}</div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

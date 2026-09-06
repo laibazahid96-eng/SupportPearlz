@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}SupportPearlz - Sign in{% endblock %}
+{% block content %}
+<div class="card card--narrow">
+    <div class="brand">
+        <span class="brand__mark">SP</span>
+        <span class="brand__name">SupportPearlz</span>
+    </div>
+    <h1>Sign in to continue</h1>
+    <p class="muted">Enter your own OpenAI API key to start a support session.</p>
+
+    <form method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        <label for="api_key">OpenAI API key</label>
+        {{ form.api_key(id="api_key", placeholder="sk-...", autocomplete="off") }}
+        {% for err in form.api_key.errors %}
+            <p class="field-error">{{ err }}</p>
+        {% endfor %}
+        <button type="submit" class="btn btn--primary">Continue</button>
+    </form>
+
+    {% if error %}<div class="alert alert--error">{{ error }}</div>{% endif %}
+
+    <p class="hint">
+        Your key is verified with OpenAI, then kept only in a secure, server-side
+        session for this browser &mdash; it is never written to disk or stored in
+        the project files.
+    </p>
+</div>
+{% endblock %}
