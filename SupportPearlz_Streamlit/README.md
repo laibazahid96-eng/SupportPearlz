@@ -1,5 +1,7 @@
 # SupportPearlz (Streamlit edition)
 
+https://supportpearlz-sjrzxhgzxqssenj6hmcmnr.streamlit.app/
+
 The same SupportPearlz customer-support assistant, rebuilt as a single
 Streamlit app. No Flask, no server config — one command runs it.
 
